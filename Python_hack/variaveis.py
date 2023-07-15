@@ -1,7 +1,7 @@
 #!/usr/bin/python
 #Meu segundo script
 
-print ("Desec Security");
+print ("Test Security");
 ip = input("Digite o IP: "); #string
 porta = int(input("Digite a porta: "));
 ver = 1.1
