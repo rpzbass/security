@@ -8,7 +8,7 @@
 Write-host @"
 ----------------------------------------------------------
 |                                                        |
-|            COPIA FOTOS COM ATÉ 10 DIAS ANTERIORES      |
+|            COPIA FOTOS COM ATÃ‰ 10 DIAS ANTERIORES      |
 |            DO SERVER JCSEC-AP01 by RP                  | 
 |                                                        |
 ----------------------------------------------------------
@@ -33,7 +33,7 @@ foreach($foto in $fotoantigas){
 while(1){
 
 
-$path ="\\192.168.X.X\Gravacao\PRIVATE\FOTOS"
+$path ="<diretorio>"
 
 $fotos = Get-ChildItem -path $path| Where-Object{$_.LastWriteTime -ge (Get-Date).AddDays(-10)}
 
@@ -42,12 +42,12 @@ $cont= 0
 
 foreach($foto in $fotos){
     
-        $dst =  Test-Path -Path C:\SPTrans\FOTOS\$foto
+        $dst =  Test-Path -Path <diretorio>\$foto
 
             if(!$dst){
                 
                 Write-Host Copiando arquivo $foto
-               <# Copy-Item -Path  $path\$foto -Destination "C:\SPTrans\FOTOS\" -Force #>
+               <# Copy-Item -Path  $path\$foto -Destination "Diretorio" -Force #>
            
                 
             }
