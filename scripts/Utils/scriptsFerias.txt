@@ -1,0 +1,100 @@
+
+#Autor: Ronaldo Pereira
+
+#Descrição: Desativa usuarios e coloca a tag ferias no campo descrição 
+
+
+function entraEmFerias{
+
+
+    foreach($list in $lista){
+
+        
+        $login = Get-AdUser -Filter {Name -eq $list} | Select-Object -ExpandProperty SamAccountname
+
+        set-aduser -Identity $login -Description teste4 
+        
+        Disable-ADAccount -Identity $login
+        
+
+    }
+
+}
+
+
+function listarUsuarios{
+
+    foreach($list in $lista){
+       
+       Write-Host + $list
+
+    }
+
+}
+
+
+function retornoFerias{
+ 
+    foreach($list in $lista){
+
+        $login = Get-AdUser -Filter {Name -eq $list} | Select-Object -ExpandProperty SamAccountname
+
+        set-aduser -Identity $login  -Description " " 
+        
+        Enable-ADAccount -Identity $list 
+    
+    } 
+
+}
+
+Clear-Host
+
+Write-Host @"
+
++=================================================+        
+|                                                 |
+|                                                 |
+|        SCRIPT FERIAS - MENU  0.2 by RP          |
+|                                                 |
++=================================================+
+
+1 - Desabilitar contas de usuarios em Ferias  
+
+2 - Habilitar contas de usuarios Retorno 
+
+---------------Lista de Usuarios RH---------------
+"@
+
+
+
+
+$lista = cat .\usuarios.txt
+
+listarUsuarios
+
+Write-Host @"
+--------------------------------------------------
+
+"@
+
+
+
+
+
+
+$opc = Read-Host "OPCÕES" 
+
+
+
+switch ( $opc )  
+
+{
+   
+   
+    1 {  entraEmFerias  }
+   
+    2 {  retornoFerias  }
+
+
+
+}
