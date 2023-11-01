@@ -13,11 +13,11 @@ else:
 		print "BANNER E",banner
 
 		print("Enviando usuario")
-		meusocket.send("USER ricardo\n\r")
+		meusocket.send("USER ronaldo\n\r")
 		banner = meusocket.recv(1024)
 		print banner
 
 		print("Enviando senha")
-		meusocket.send("PASS ricardo\n\r")
+		meusocket.send("PASS ronaldo\n\r")
 		banner = meusocket.recv(1024)	
 		print banner
